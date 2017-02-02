@@ -2,27 +2,27 @@ package math2;
 
 import java.util.Random;
 
-import plotter.Line;
-import plotter.SimplePlotter;
+//import plotter.Line;
+//import plotter.SimplePlotter;
 
 public class Delaunay {
 
-    static SimplePlotter plot = new SimplePlotter("");
-	
-	public static void main(String[] args){
-		Random rand = new Random();
-	    double[][] p = new double[5][2];
-	    plot.setMaxX(1);
-	    plot.setMinX(0);
-	    plot.setMaxY(1);
-	    plot.setMinY(0);
-		for(int i = 0; i<p.length; i++){
-			p[i][0] = rand.nextDouble();
-			p[i][1] = rand.nextDouble();
-			plot.addPoint(p[i][0], p[i][1], java.awt.Color.BLUE);
-		}
-		triangulate(p);
-	}
+//    static SimplePlotter plot = new SimplePlotter("");
+//	
+//	public static void main(String[] args){
+//		Random rand = new Random();
+//	    double[][] p = new double[5][2];
+//	    plot.setMaxX(1);
+//	    plot.setMinX(0);
+//	    plot.setMaxY(1);
+//	    plot.setMinY(0);
+//		for(int i = 0; i<p.length; i++){
+//			p[i][0] = rand.nextDouble();
+//			p[i][1] = rand.nextDouble();
+//			plot.addPoint(p[i][0], p[i][1], java.awt.Color.BLUE);
+//		}
+//		triangulate(p);
+//	}
 	
 	
 	public static void triangulate(double[][] points){
@@ -46,7 +46,7 @@ public class Delaunay {
 				}
 				if(flag){
 					System.out.println("Line: "+points[p][0]+", "+points[p][1]+" and "+points[rem][0]+", "+points[rem][1]);
-					plot.addLine(new Line(points[p][0], points[p][1], points[rem][0], points[rem][1], java.awt.Color.RED), true);
+//					plot.addLine(new Line(points[p][0], points[p][1], points[rem][0], points[rem][1], java.awt.Color.RED), true);
 				}
 			}
 		}
