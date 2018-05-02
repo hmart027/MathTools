@@ -66,4 +66,22 @@ public class Math2 {
 		return new float[]{r, theta, phi};
 	}
 
+	public static float[][] double2floatMatrix(double[][] mat){
+		int l0 = mat.length;
+		float[][] out = new float[l0][];
+		for(int y=0; y<l0; y++){
+			out[y] = double2floatVector(mat[y]);
+		}
+		return out;
+	}
+	
+	public static float[] double2floatVector(double[] vec){
+		int l0 = vec.length;
+		float[] out = new float[l0];
+		for(int y=0; y<l0; y++){
+			out[y] = (float) vec[y];
+		}
+		return out;
+	}
+	
 }
