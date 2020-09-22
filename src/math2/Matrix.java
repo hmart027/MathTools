@@ -76,6 +76,15 @@ public class Matrix {
 		return out;
 	}
 	
+	public static int[][] transpose(int[][] m){
+		int[] l = new int[]{m.length,m[0].length};
+		int[][] out = new int[l[1]][l[0]];
+		for(int y=0; y<l[0]; y++)
+			for(int x=0; x<l[1]; x++)
+				out[x][y]=m[y][x];
+		return out;
+	}
+	
 	public static double[][] add(double[][] m1, double[][] m2) throws MatrixSizeMismatchException{
 		if(m1.length!=m2.length) throw new MatrixSizeMismatchException();
 		if(m1[0].length!=m2[0].length) throw new MatrixSizeMismatchException();
@@ -120,6 +129,42 @@ public class Matrix {
 		int[] l1 = new int[]{m1.length,m1[0].length};
 		int[] l2 = new int[]{m2.length,m2[0].length};
 //		if(l1[0]!=l2[1] || l1[1]!=l2[0]) return null;
+		if(l1[1]!=l2[0]) return null;
+		double out[][] = new double[l1[0]][l2[1]];
+		double t = 0;
+		double[][] m2t = transpose(m2);
+		for(int y=0; y<l1[0]; y++){
+			for(int x=0; x<l2[1]; x++){
+				t=0;
+				for(int i=0; i<l1[1]; i++)
+					t+=m1[y][i]*m2t[x][i];
+				out[y][x] = t;
+			}
+		}
+		return out;
+	}
+	
+	public static int[][] multiply(int[][] m1, int[][] m2){
+		int[] l1 = new int[]{m1.length,m1[0].length};
+		int[] l2 = new int[]{m2.length,m2[0].length};
+		if(l1[1]!=l2[0]) return null;
+		int out[][] = new int[l1[0]][l2[1]];
+		int t = 0;
+		int[][] m2t = transpose(m2);
+		for(int y=0; y<l1[0]; y++){
+			for(int x=0; x<l2[1]; x++){
+				t=0;
+				for(int i=0; i<l1[1]; i++)
+					t+=m1[y][i]*m2t[x][i];
+				out[y][x] = t;
+			}
+		}
+		return out;
+	}
+	
+	public static double[][] dotProduct(double[][] m1, double[][] m2){
+		int[] l1 = new int[]{m1.length,m1[0].length};
+		int[] l2 = new int[]{m2.length,m2[0].length};
 		if(l1[1]!=l2[0]) return null;
 		double out[][] = new double[l1[0]][l2[1]];
 		double t = 0;
